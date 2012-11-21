@@ -1,4 +1,4 @@
 # localStorage webapp prototype
 
-An experiment by (http://fourkitchens.com)[Four Kitchens]
+An experiment by [Four Kitchens](http://fourkitchens.com)
 
