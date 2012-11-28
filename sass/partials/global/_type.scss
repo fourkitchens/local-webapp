@@ -26,38 +26,44 @@ h1 {
   @include adjust-font-size-to( $h1-font-size );
 
   // Sets 1 unit of vertical rhythm on the top and bottom margins.
-  @include leader(1, $h1-font-size);
-  @include trailer(1, $h1-font-size);
+  @include leader(0, $h1-font-size);
+  @include trailer(0, $h1-font-size);
+
+  // Center all h1 tags
+  text-align: center;
 }
 
 h2 {
   @include adjust-font-size-to( $h2-font-size );
-  @include leader(1, $h2-font-size);
-  @include trailer(1, $h2-font-size);
+  @include leader(0, $h2-font-size);
+  @include trailer(0, $h2-font-size);
+
+  // Knock some of this ridiculous line-height off of there
+  line-height: 1.25em;
 }
 
 h3 {
   @include adjust-font-size-to( $h3-font-size );
-  @include leader(1, $h3-font-size);
-  @include trailer(1, $h3-font-size);
+  @include leader(0, $h3-font-size);
+  @include trailer(0, $h3-font-size);
 }
 
 h4 {
   @include adjust-font-size-to( $h4-font-size );
-  @include leader(1, $h4-font-size);
-  @include trailer(1, $h4-font-size);
+  @include leader(0, $h4-font-size);
+  @include trailer(0, $h4-font-size);
 }
 
 h5 {
   @include adjust-font-size-to( $h5-font-size );
-  @include leader(1, $h5-font-size);
-  @include trailer(1, $h5-font-size);
+  @include leader(0, $h5-font-size);
+  @include trailer(0, $h5-font-size);
 }
 
 h6 {
   @include adjust-font-size-to( $h6-font-size );
-  @include leader(1, $h6-font-size);
-  @include trailer(1, $h6-font-size);
+  @include leader(0, $h6-font-size);
+  @include trailer(0, $h6-font-size);
 }
 
 
@@ -112,7 +118,9 @@ li {
 
 ul.unstyled,
 ol.unstyled {
-
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 // Misc.

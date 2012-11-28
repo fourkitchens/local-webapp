@@ -1,0 +1,8 @@
+/**
+ * Sections
+ * A section is a "page" of content within the UI
+ */
+
+#page > section {
+  padding-bottom: 2 * $ui-spacing;
+}

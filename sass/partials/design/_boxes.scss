@@ -1,0 +1,19 @@
+/**
+ * Boxes
+ * - Boxes make up one unit of content within the UI
+ */
+
+
+.box {
+  margin: $ui-spacing;
+  padding: $ui-spacing;
+  border: 1px solid #333;
+  background: #fff;
+
+  @include box-shadow(
+    // drop shadow
+    0 2px 7px rgba(#000,0.25),
+    // inner glow
+    inset 0 0 6px rgba(#000,0.1)
+  );
+}
