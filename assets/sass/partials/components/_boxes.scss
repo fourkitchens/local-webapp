@@ -16,4 +16,19 @@
     // inner glow
     inset 0 0 6px rgba(#000,0.1)
   );
+
+  img {
+    max-width: 200px;
+    max-height: 200px;
+    float: left;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    font-weight: 700;
+  }
+
+  .content {
+    margin-left: 200px;
+  }
 }
