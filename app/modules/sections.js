@@ -11,6 +11,7 @@ define(['app', 'lodash', 'backbone'], function(app, _, Backbone) {
   });
 
   Sections.Collection = Backbone.Collection.extend({
+    model: Sections.Model
   });
 
   Sections.Views.Item = Backbone.View.extend({
@@ -27,7 +28,7 @@ define(['app', 'lodash', 'backbone'], function(app, _, Backbone) {
       this.$el.attr('id', this.id);
       this.$el.children().remove();
       this.collection.each(function(box) {
-          this.insertView(new Sections.Views.Item({
+        this.insertView(new Sections.Views.Item({
           model: box
         }));
       }, this);
