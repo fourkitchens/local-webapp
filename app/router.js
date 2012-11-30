@@ -27,8 +27,9 @@ function(app, Sections) {
         collection: this.aboutSections
       });
 
-      var t = new Sections.Model();
-      this.aboutSections.reset([t]);
+      // var t = new Sections.Model();
+      // this.aboutSections.reset([t]);
+      this.aboutSections.fetch();
 
       app.useLayout('main')
       app.layout.setViews({
