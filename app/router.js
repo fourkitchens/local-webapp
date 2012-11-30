@@ -13,21 +13,26 @@ function(app, Sections) {
     },
 
     index: function() {
-
+      app.useLayout('main')
+      app.layout.setViews({
+        '#app': this.aboutSectionsList
+      });
     },
 
     initialize: function() {
-      this.sections = new Sections.Collection();
-      this.sectionsList = new Sections.Views.List({
-        collection: this.sections
+      this.aboutSections = new Sections.Collection();
+      this.aboutSectionsList = new Sections.Views.List({
+        id: 'about',
+        collection: this.aboutSections
       });
 
+      app.useLayout('main')
       app.layout.setViews({
-        '.main': this.sectionsList
+        '#app': this.aboutSectionsList
       });
     }
   });
 
   return Router;
-
 });
+

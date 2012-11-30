@@ -17,32 +17,26 @@ define(['app', 'lodash', 'backbone'], function(app, _, Backbone) {
     template: 'box'
   });
 
-  SectionsViews.List = Backbone.View.extend({
-    template: 'page',
-    // className: '',
+  Sections.Views.List = Backbone.View.extend({
+    tagName: 'section',
+
     beforeRender: function() {
-      // this.$el.children().remove();
-      // this.$el.append('<thead><tr><td>From</td><td>Subject</td><td>Received</td><td>Expires</td></tr></thead>');
-      // this.collection.each(function(message) {
-      //   this.insertView(new Messages.Views.Item({
-      //     model: message
-      //   }));
-      // }, this);
+      this.$el.attr('id', this.id);
+      this.$el.children().remove();
+      this.collection.each(function(box) {
+          this.insertView(new Sections.Views.Item({
+          model: box
+        }));
+      }, this);
     },
+
     cleanup: function() {
-      // this.collection.off(null, null, this);
     },
+
     initialize: function() {
-      // this.collection.on("reset", this.render, this);
-
-      // this.collection.on("fetch", function() {
-      //   this.$el.html("<img src='/assets/img/loader.gif'>");
-      // }, this);
-
-      // // Poll the server for new messages every 60 seconds.
-      // setInterval(_.bind(function() {
-      //   this.collection.fetch();
-      // }, this), 60000);
+      this.collection.on("reset", this.render, this);
     }
   });
+
+  return Sections;
 });
