@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>Harvard proposal</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-    <script src="/js/modernizr.min.js"></script>
+    <script src="/assets/js/libs/modernizr.min.js"></script>
   </head>
   <body>
   <div id="app">
@@ -47,25 +47,10 @@
     </div><!-- #page -->
   </div><!-- #app -->
 
+  <!-- Application source. -->
+  <script data-main="app/config" src="assets/js/libs/require.js"></script>
 
-
-
-
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="/js/swipe.min.js"></script>
     <script>
-      // if (Modernizr.touch) {
-        $(document).ready(function(){
-          window.mySwipe = new Swipe(document.getElementById('app'), {
-            speed: 400,
-            callback: function(event, index, elem) {
-              $("html, body").animate({ scrollTop: 0 }, "fast");
-            }
-          });
-        });
-      // }
     </script>
   </body>
 </html>
