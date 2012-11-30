@@ -4,13 +4,14 @@ define([
   "lodash",
   "backbone",
   "handlebars",
-  "swipe",
+//  "swipe",
 
   // Plugins.
   "plugins/backbone.layoutmanager"
 ],
 
 function($, _, Backbone, Handlebars) {
+  /*
   // if (Modernizr.touch) {
     $(document).ready(function(){
       window.mySwipe = new Swipe(document.getElementById('app'), {
@@ -21,6 +22,7 @@ function($, _, Backbone, Handlebars) {
       });
     });
   // }
+  */
 
   // Provide a global location to place configuration settings and module
   // creation.

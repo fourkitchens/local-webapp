@@ -12,38 +12,36 @@ define(['app', 'lodash', 'backbone'], function(app, _, Backbone) {
   });
 
   Sections.Collection = Backbone.Collection.extend({
+    model: Sections.Model
   });
 
   Sections.Views.Item = Backbone.View.extend({
-    template: 'box'
-  });
-
-  SectionsViews.List = Backbone.View.extend({
-    template: 'page',
-    // className: '',
-    beforeRender: function() {
-      // this.$el.children().remove();
-      // this.$el.append('<thead><tr><td>From</td><td>Subject</td><td>Received</td><td>Expires</td></tr></thead>');
-      // this.collection.each(function(message) {
-      //   this.insertView(new Messages.Views.Item({
-      //     model: message
-      //   }));
-      // }, this);
-    },
-    cleanup: function() {
-      // this.collection.off(null, null, this);
-    },
-    initialize: function() {
-      // this.collection.on("reset", this.render, this);
-
-      // this.collection.on("fetch", function() {
-      //   this.$el.html("<img src='/assets/img/loader.gif'>");
-      // }, this);
-
-      // // Poll the server for new messages every 60 seconds.
-      // setInterval(_.bind(function() {
-      //   this.collection.fetch();
-      // }, this), 60000);
+    template: 'box',
+    serialize: function() {
+      return this.model.toJSON();
     }
   });
+
+  Sections.Views.List = Backbone.View.extend({
+    tagName: 'section',
+
+    beforeRender: function() {
+      this.$el.attr('id', this.id);
+      this.$el.children().remove();
+      this.collection.each(function(box) {
+        this.insertView(new Sections.Views.Item({
+          model: box
+        }));
+      }, this);
+    },
+
+    cleanup: function() {
+    },
+
+    initialize: function() {
+      this.collection.on("reset", this.render, this);
+    }
+  });
+
+  return Sections;
 });

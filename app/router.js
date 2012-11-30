@@ -1,7 +1,7 @@
 define([
   // Application.
-  "app",
-  "modules/sections"
+  'app',
+  'modules/sections'
 ],
 
 function(app, Sections) {
@@ -9,25 +9,34 @@ function(app, Sections) {
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
     routes: {
-      "": "index"
+      '': 'index'
     },
 
     index: function() {
-
+      app.useLayout('main')
+      app.layout.setViews({
+        '#page': this.aboutSectionsList
+      });
+      app.layout.render();
     },
 
     initialize: function() {
-      this.sections = new Sections.Collection();
-      this.sectionsList = new Sections.Views.List({
-        collection: this.sections
+      this.aboutSections = new Sections.Collection();
+      this.aboutSectionsList = new Sections.Views.List({
+        id: 'about',
+        collection: this.aboutSections
       });
 
+      var t = new Sections.Model();
+      this.aboutSections.reset([t]);
+
+      app.useLayout('main')
       app.layout.setViews({
-        '.main': this.sectionsList
+        '#page': this.aboutSectionsList
       });
     }
   });
 
   return Router;
-
 });
+
