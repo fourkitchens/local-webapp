@@ -17,6 +17,7 @@ function(app, Sections) {
       app.layout.setViews({
         '#app': this.aboutSectionsList
       });
+      app.layout.render();
     },
 
     initialize: function() {
@@ -25,6 +26,9 @@ function(app, Sections) {
         id: 'about',
         collection: this.aboutSections
       });
+
+      var t = new Sections.Model();
+      this.aboutSections.reset([t]);
 
       app.useLayout('main')
       app.layout.setViews({

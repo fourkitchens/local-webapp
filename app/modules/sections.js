@@ -14,7 +14,10 @@ define(['app', 'lodash', 'backbone'], function(app, _, Backbone) {
   });
 
   Sections.Views.Item = Backbone.View.extend({
-    template: 'box'
+    template: 'box',
+    serialize: function() {
+      return this.model.toJSON();
+    }
   });
 
   Sections.Views.List = Backbone.View.extend({
