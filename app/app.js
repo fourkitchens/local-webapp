@@ -7,7 +7,8 @@ define([
 //  "swipe",
 
   // Plugins.
-  "plugins/backbone.layoutmanager"
+  "plugins/backbone.layoutmanager",
+  "plugins/backbone-websql"
 ],
 
 function($, _, Backbone, Handlebars) {

@@ -1,4 +1,5 @@
 define(['app', 'lodash', 'backbone'], function(app, _, Backbone) {
+  var db = openDatabase('sections', '', 'sections', 1024 * 1024);
   var Sections = app.module();
 
   Sections.Model = Backbone.Model.extend({
@@ -11,9 +12,15 @@ define(['app', 'lodash', 'backbone'], function(app, _, Backbone) {
     }
   });
 
-  Sections.Collection = Backbone.Collection.extend({
-    model: Sections.Model,
+  Sections.WebCollection = Backbone.Collection.extend({
+    model: Sections.Model
     url: '/sample.json'
+  });
+
+  Sections.WebSQLCollection = Backbone.Collection.extend({
+    model: Sections.Model,
+    store: new WebSQLStore(db, 'sections'),
+    sync: Backbone.WebSQLSync
   });
 
   Sections.Views.Item = Backbone.View.extend({
@@ -46,3 +53,4 @@ define(['app', 'lodash', 'backbone'], function(app, _, Backbone) {
 
   return Sections;
 });
+
