@@ -358,6 +358,7 @@ body {
  * - Boxes make up one unit of content within the UI
  */
 .box {
+  overflow: hidden;
   margin: 1em;
   padding: 1em;
   border: 1px solid #333;
@@ -370,6 +371,7 @@ body {
   max-width: 200px;
   max-height: 200px;
   float: left;
+  margin-right: 1em;
 }
 .box h2 {
   font-size: 1.6em;

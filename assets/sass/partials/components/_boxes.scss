@@ -5,6 +5,7 @@
 
 
 .box {
+  @include clearfix;
   margin: $ui-spacing;
   padding: $ui-spacing;
   border: 1px solid #333;
@@ -21,6 +22,7 @@
     max-width: 200px;
     max-height: 200px;
     float: left;
+    margin-right: 1em;
   }
 
   h2 {
