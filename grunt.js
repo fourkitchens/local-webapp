@@ -77,40 +77,31 @@ module.exports = function(grunt) {
     // only want to load one stylesheet in index.html.
     mincss: {
       "dist/release/index.css": [
-        "dist/debug/index.css"
+        "dist/release/main.css"
       ]
     },
 
-    // The stylus task is used to compile Stylus stylesheets into a single
-    // CSS file for debug and release deployments.  
-    stylus: {
-      // Put all your CSS files here, order matters!
-      files: [
-        "assets/vendor/h5bp/css/style.css"
-      ],
-
-      // Default task which runs in debug mode, this will build out to the
-      // `dist/debug` directory.
-      compile: {
-        // Used for @imports.
-        options: { paths: ["assets/css"] },
-        
-        files: {
-          "dist/debug/index.css": "<config:stylus.files>"
-        }
-      },
-
-      // This dev task only runs with `watch:stylus` this will *completely*
-      // overwrite the `assets/css/index.css` file referenced in `index.html`.
-      // Use this only when you cannot use the `bbb server` runtime
-      // compilation.
+    compass: {
       dev: {
-        // Used for @imports.
-        options: { paths: ["assets/css"] },
-        
-        files: {
-          "assets/css/index.css": "<config:stylus.files>"
-        }
+        src: 'assets/sass',
+        dest: 'dist/debug',
+        linecomments: true,
+        forcecompile: true,
+        require: 'aurora',
+        debugsass: true,
+        images: 'assets/images',
+        relativeassets: true
+      },
+      prod: {
+        src: 'assets/sass',
+        dest: 'dist/release',
+        outputstyle: 'compressed',
+        linecomments: false,
+        forcecompile: true,
+        require: 'aurora',
+        debugsass: false,
+        images: 'assets/images',
+        relativeassets: true
       }
     },
 
@@ -202,28 +193,31 @@ module.exports = function(grunt) {
     },
 
     // The watch task can be used to monitor the filesystem and execute
-    // specific tasks when files are modified.  By default, the watch task is
-    // available to compile stylus templates if you are unable to use the
-    // runtime builder (use if you have a custom server, PhoneGap, Adobe Air,
-    // etc.)
+    // specific tasks when files are modified.
     watch: {
-      stylus: {
-        files: ["grunt.js", "assets/css/**/*.styl"],
-        tasks: "stylus:dev"
+      compass: {
+        files: ["grunt.js", "assets/sass/**/*.scss"],
+        tasks: "compass:dev"
+      },
+      requirejs: {
+        files: ["grunt.js", "app/**/*.js"],
+        tasks: "lint jst requirejs concat"
       }
     }
 
   });
+
+  grunt.loadNpmTasks('grunt-compass');
 
   // The debug task will remove all contents inside the dist/ folder, lint
   // all your code, precompile all the underscore templates into
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.
-  grunt.registerTask("debug", "clean lint jst requirejs concat stylus:compile");
+  grunt.registerTask("debug", "clean lint jst requirejs concat compass:dev");
 
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "debug min mincss");
+  grunt.registerTask("release", "debug compass:prod min mincss");
 
 };
