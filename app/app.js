@@ -1,14 +1,14 @@
 define([
   // Libraries.
-  "jquery",
-  "lodash",
-  "backbone",
-  "handlebars",
-//  "swipe",
+  'jquery',
+  'lodash',
+  'backbone',
+  'handlebars',
+  'swipe',
 
   // Plugins.
-  "plugins/backbone.layoutmanager",
-  "plugins/backbone-websql"
+  'plugins/backbone.layoutmanager',
+  'plugins/backbone-websql'
 ],
 
 function($, _, Backbone, Handlebars) {
@@ -18,7 +18,7 @@ function($, _, Backbone, Handlebars) {
       window.mySwipe = new Swipe(document.getElementById('app'), {
         speed: 400,
         callback: function(event, index, elem) {
-          $("html, body").animate({ scrollTop: 0 }, "fast");
+          $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
       });
     });
@@ -29,7 +29,7 @@ function($, _, Backbone, Handlebars) {
   // creation.
   var app = {
     // The root path to run the application.
-    root: "/"
+    root: '/'
   };
 
   // Localize or create a new JavaScript Template object.
@@ -41,15 +41,15 @@ function($, _, Backbone, Handlebars) {
     manage: true,
 
     paths: {
-      layout: "app/templates/layouts/",
-      template: "app/templates/"
+      layout: 'app/templates/layouts/',
+      template: 'app/templates/'
     },
 
     fetch: function(path) {
       var done;
 
       // Add the html extension.
-      path = path + ".html";
+      path = path + '.html';
 
       // If the template has not been loaded yet, then load.
       if (!JST[path]) {
@@ -94,12 +94,12 @@ function($, _, Backbone, Handlebars) {
       // Create a new Layout with options.
       var layout = new Backbone.Layout(_.extend({
         template: name,
-        className: "layout " + name,
-        id: "layout"
+        className: 'layout ' + name,
+        id: 'layout'
       }, options));
 
       // Insert into the DOM.
-      $("#main").empty().append(layout.el);
+      $('#main').empty().append(layout.el);
 
       // Render the layout.
       layout.render();

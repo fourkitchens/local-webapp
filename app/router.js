@@ -14,7 +14,7 @@ function(_, app, Sections) {
     },
 
     index: function() {
-      app.useLayout('main')
+      app.useLayout('main');
       app.layout.setViews({
         '#page': this.aboutSectionsList
       });
@@ -34,7 +34,7 @@ function(_, app, Sections) {
         error: _.bind(this.fetchWebAboutSections, this)
       });
 
-      app.useLayout('main')
+      app.useLayout('main');
       app.layout.setViews({
         '#page': this.aboutSectionsList
       });
