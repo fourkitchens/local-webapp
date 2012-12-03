@@ -12,19 +12,6 @@ define([
 ],
 
 function($, _, Backbone, Handlebars) {
-  /*
-  // if (Modernizr.touch) {
-    $(document).ready(function(){
-      window.mySwipe = new Swipe(document.getElementById('app'), {
-        speed: 400,
-        callback: function(event, index, elem) {
-          $('html, body').animate({ scrollTop: 0 }, 'fast');
-        }
-      });
-    });
-  // }
-  */
-
   // Provide a global location to place configuration settings and module
   // creation.
   var app = {

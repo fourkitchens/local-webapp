@@ -18,7 +18,6 @@ function(_, app, Sections) {
       app.layout.setViews({
         '#page': this.aboutSectionsList
       });
-      app.layout.render();
     },
 
     initialize: function() {
@@ -38,6 +37,17 @@ function(_, app, Sections) {
       app.layout.setViews({
         '#page': this.aboutSectionsList
       });
+
+      if (Modernizr.touch) {
+        $(document).ready(function(){
+          window.mySwipe = new Swipe(document.getElementById('main'), {
+            speed: 400,
+            callback: function(event, index, elem) {
+              $('html, body').animate({ scrollTop: 0 }, 'fast');
+            }
+          });
+        });
+      }
     },
 
     fetchWebAboutSections: function() {
