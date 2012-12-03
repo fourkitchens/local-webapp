@@ -42,6 +42,11 @@ function(_, app, Sections) {
 
     fetchWebAboutSections: function() {
       this.webAboutSections.fetch({
+        /**
+         * Checks to see if the entities from the web have already
+         * been stored in WeBSQL. If not, store them there and update
+         * the DOM.
+         */
         success: _.bind(function(collection, response, options) {
           response.forEach(_.bind(function(section) {
             if (this.sqlAboutSections.where(section).length === 0) {
