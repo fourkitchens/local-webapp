@@ -1,10 +1,11 @@
 define([
+  'lodash',
   // Application.
   'app',
   'modules/sections'
 ],
 
-function(app, Sections) {
+function(_, app, Sections) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -21,17 +22,33 @@ function(app, Sections) {
     },
 
     initialize: function() {
-      this.aboutSections = new Sections.Collection();
+      this.webAboutSections = new Sections.WebCollection();
+      this.sqlAboutSections = new Sections.WebSQLCollection();
       this.aboutSectionsList = new Sections.Views.List({
         id: 'about',
-        collection: this.aboutSections
+        collection: this.sqlAboutSections
       });
 
-      this.aboutSections.fetch();
+      this.sqlAboutSections.fetch({
+        success: _.bind(this.fetchWebAboutSections, this),
+        error: _.bind(this.fetchWebAboutSections, this)
+      });
 
       app.useLayout('main')
       app.layout.setViews({
         '#page': this.aboutSectionsList
+      });
+    },
+
+    fetchWebAboutSections: function() {
+      this.webAboutSections.fetch({
+        success: _.bind(function(collection, response, options) {
+          response.forEach(_.bind(function(section) {
+            if (this.sqlAboutSections.where(section).length === 0) {
+              this.sqlAboutSections.create(section);
+            }
+          }, this));
+        }, this)
       });
     }
   });
