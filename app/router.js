@@ -20,7 +20,16 @@ function(_, app, Sections, Static) {
         '#page-about': this.aboutSections,
         '#page-blog': this.blogSectionsList
       });
-      app.layout.render();
+      app.layout.render(function(el) {
+        if (Modernizr.touch) {
+          window.mySwipe = new Swipe(document.getElementById('layout'), {
+            speed: 400,
+            callback: function(event, index, elem) {
+              $('html, body').animate({ scrollTop: 0 }, 'fast');
+            }
+          });
+        }
+      });
     },
 
     initialize: function() {
@@ -38,22 +47,6 @@ function(_, app, Sections, Static) {
         error: _.bind(this.fetchWebBlogSections, this)
       });
 
-      app.useLayout('main');
-      app.layout.setViews({
-        '#page-about': this.aboutSections,
-        '#page-blog': this.blogSectionsList
-      });
-
-      if (Modernizr.touch) {
-        $(document).ready(function(){
-          window.mySwipe = new Swipe(document.getElementById('layout'), {
-            speed: 400,
-            callback: function(event, index, elem) {
-              $('html, body').animate({ scrollTop: 0 }, 'fast');
-            }
-          });
-        });
-      }
     },
 
     fetchWebBlogSections: function() {
