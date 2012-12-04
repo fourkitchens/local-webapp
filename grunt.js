@@ -194,8 +194,9 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-compass');
+  // @see https://github.com/backbone-boilerplate/grunt-bbb/issues/84
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
 
   // The debug task will remove all contents inside the dist/ folder, lint
   // all your code, precompile all the underscore templates into

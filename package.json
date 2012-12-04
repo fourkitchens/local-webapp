@@ -4,7 +4,8 @@
   "description": "An experiment by [Four Kitchens](http://fourkitchens.com)",
   "main": "grunt.js",
   "dependencies": {
-    "grunt-compass": "~0.3.7"
+    "grunt-compass": "~0.3.7",
+    "grunt-contrib-handlebars": "~0.3.3"
   },
   "devDependencies": {},
   "scripts": {
