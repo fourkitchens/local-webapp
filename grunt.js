@@ -28,19 +28,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // The jst task compiles all application templates into JavaScript
-    // functions with the underscore.js template function from 1.2.4.  You can
-    // change the namespace and the template options, by reading this:
-    // https://github.com/gruntjs/grunt-contrib/blob/master/docs/jst.md
-    //
-    // The concat task depends on this file to exist, so if you decide to
-    // remove this, ensure concat is updated accordingly.
-    jst: {
-      "dist/debug/templates.js": [
-        "app/templates/**/*.html"
-      ]
-    },
-
     // The handlebars task compiles all application templates into JavaScript
     // functions using Handlebars templating engine.
     //
@@ -197,16 +184,17 @@ module.exports = function(grunt) {
     watch: {
       compass: {
         files: ["grunt.js", "assets/sass/**/*.scss"],
-        tasks: "compass:dev"
+        tasks: "compass:dev compass:prod mincss"
       },
       requirejs: {
         files: ["grunt.js", "app/**/*.js"],
-        tasks: "lint jst requirejs concat"
+        tasks: "lint handlebars requirejs concat min"
       }
     }
 
   });
 
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-compass');
 
   // The debug task will remove all contents inside the dist/ folder, lint
@@ -214,7 +202,7 @@ module.exports = function(grunt) {
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.
-  grunt.registerTask("debug", "clean lint jst requirejs concat compass:dev");
+  grunt.registerTask("debug", "clean lint handlebars requirejs concat compass:dev");
 
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.

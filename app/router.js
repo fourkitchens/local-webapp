@@ -18,6 +18,7 @@ function(_, app, Sections) {
       app.layout.setViews({
         '#page': this.aboutSectionsList
       });
+      app.layout.render();
     },
 
     initialize: function() {
