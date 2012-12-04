@@ -1,56 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html manifest="offline.manifest.php">
   <head>
     <title>Harvard proposal</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    <link rel="stylesheet" href="/dist/release/index.css">
     <script src="/assets/js/libs/modernizr.min.js"></script>
   </head>
   <body>
-  <div id="app">
-    <div id="page">
+    <div id="main"></div>
 
-      <section id="about">
-        <div class="box">
-          <h1>About Four Kitchens</h1>
-        </div>
-
-        <div class="box">
-          <h2>Who we are</h2>
-
-          <p><span class="summary">Four Kitchens is a design and development consultancy in Austin, Texas, that makes big websites using open-source software.</span> We serve a sophisticated and specialized clientele looking for a trusted, skilled partner to realize and exceed their goals. We do it all: Design, usability, information and systems architecture, development, and project management are all handled in-house by our talented team of Web Chefs. Four Kitchens' reputation as a leader in the open-source community has earned us invitations to train and speak at numerous conferences around the world.</p>
-
-          <p>Our mission is to change the world by setting knowledge free. We aim to achieve this mission by working with open-source software, engaging free-culture communities, and choosing projects that further the spread of knowledge and ideas.</p>
-
-          <p>The Four Kitchens Web Chefs believe that building a website is like preparing a feast: It requires a team of people with specialized and complementary skills working in parallel to create something that lots of people will enjoy. It's part art, part science, and all about preparation.</p>
-        </div>
-
-        <div class="box">
-          <h2>Our mission: change the world by setting knowledge free</h2>
-
-          <p><span class="summary">We firmly believe in the power of open source, collaboration, and communities. Contributing code and expertise to open-source projects results in better and cheaper software for our clients.</span> Vibrant open-source communities are constantly improving and testing their software, which lowers development and maintenance costs and improves security and stability. Our clients recognize this value, and it's resulted in millions of dollars saved by eliminating licensing fees, service contracts, and work spent "reinventing the wheel."</p>
-        </div>
-      </section>
-
-      <section id="scope">
-        <div class="box">
-          <h1>Project Scope</h1>
-        </div>
-      </section>
-
-      <section id="portfolio">
-        <div class="box">
-          <h1>Portfolio</h1>
-        </div>
-      </section>
-
-    </div><!-- #page -->
-  </div><!-- #app -->
-
-  <!-- Application source. -->
-  <script data-main="app/config" src="assets/js/libs/require.js"></script>
-
-    <script>
-    </script>
+    <script src="/dist/release/require.js"></script>
   </body>
 </html>

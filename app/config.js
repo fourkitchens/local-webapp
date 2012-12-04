@@ -2,36 +2,37 @@
 require.config({
 
   // Initialize the application with the main application file.
-  deps: ["main"],
+  deps: ['main'],
 
   paths: {
     // JavaScript folders.
-    libs: "../assets/js/libs",
-    plugins: "../assets/js/plugins",
-    vendor: "../assets/vendor",
+    libs: '../assets/js/libs',
+    plugins: '../assets/js/plugins',
+    vendor: '../assets/vendor',
 
     // Libraries.
-    jquery: "../assets/js/libs/jquery",
-    lodash: "../assets/js/libs/lodash",
-    backbone: "../assets/js/libs/backbone",
-    handlebars: "../assets/js/libs/handlebars-1.0.0.beta.6",
-    swipe: "../assets/js/libs/swipe.min"
+    jquery: '../assets/js/libs/jquery',
+    lodash: '../assets/js/libs/lodash',
+    backbone: '../assets/js/libs/backbone',
+    handlebars: '../assets/js/libs/handlebars-1.0.0.beta.6',
+    swipe: '../assets/js/libs/swipe'
   },
 
   shim: {
     // Backbone library depends on lodash and jQuery.
     backbone: {
-      deps: ["lodash", "jquery"],
-      exports: "Backbone"
+      deps: ['lodash', 'jquery'],
+      exports: 'Backbone'
     },
 
     // Handlebars has no dependencies.
     handlebars: {
-      exports: "Handlebars"
+      exports: 'Handlebars'
     },
 
     // Backbone.LayoutManager depends on Backbone.
-    "plugins/backbone.layoutmanager": ["backbone"]
+    'plugins/backbone.layoutmanager': ['backbone'],
+    'plugins/backbone-websql': ['backbone']
   }
 
 });

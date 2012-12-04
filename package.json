@@ -1,0 +1,21 @@
+{
+  "name": "local-webapp",
+  "version": "0.0.0",
+  "description": "An experiment by [Four Kitchens](http://fourkitchens.com)",
+  "main": "grunt.js",
+  "dependencies": {
+    "grunt-compass": "~0.3.7",
+    "grunt-contrib-handlebars": "~0.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fourkitchens/local-webapp.git"
+  },
+  "author": "Four Kitchens",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
