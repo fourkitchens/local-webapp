@@ -20,3 +20,13 @@ You can also cause the application to be rebuilt automatically when you change
 sass or JavaScript files using ```bbb watch```.
 
 Before you can get started with grunt run ```npm install``` from this directory.
+
+### require.js and compiled sources
+
+The JavaScript is now compiled with require.js. This obviously isn't very useful
+if you need to debug something, so change the require path in index.html to
+```/dist/debug/require.js```.
+
+Similarly, if you need to see unminified CSS change the stylesheet path to
+```/dist/debug/main.css```.
+

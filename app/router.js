@@ -26,6 +26,7 @@ function(_, app, Sections) {
       this.sqlAboutSections = new Sections.WebSQLCollection();
       this.aboutSectionsList = new Sections.Views.List({
         id: 'about',
+        title: 'From the Four Kitchens Blog',
         collection: this.sqlAboutSections
       });
 
@@ -60,7 +61,7 @@ function(_, app, Sections) {
          */
         success: _.bind(function(collection, response, options) {
           response.forEach(_.bind(function(section) {
-            if (this.sqlAboutSections.where(section).length === 0) {
+            if (this.sqlAboutSections.where({ guid: section.guid }).length === 0) {
               this.sqlAboutSections.create(section);
             }
           }, this));

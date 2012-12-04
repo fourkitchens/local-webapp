@@ -54,9 +54,14 @@ function($, _, Backbone, Handlebars) {
         JST[path] = Handlebars.template(JST[path]);
         JST[path].__compiled__ = true;
       }
-      
+
       return JST[path];
     }
+  });
+
+  // Handlebars helpers.
+  Handlebars.registerHelper('description', function() {
+    return new Handlebars.SafeString(this.description);
   });
 
   // Mix Backbone.Events, modules, and layout management into the app object.
