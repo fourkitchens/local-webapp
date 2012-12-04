@@ -2,10 +2,11 @@ define([
   'lodash',
   // Application.
   'app',
-  'modules/sections'
+  'modules/sections',
+  'modules/static'
 ],
 
-function(_, app, Sections) {
+function(_, app, Sections, Static) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -16,33 +17,36 @@ function(_, app, Sections) {
     index: function() {
       app.useLayout('main');
       app.layout.setViews({
-        '#page': this.aboutSectionsList
+        '#page-about': this.aboutSections,
+        '#page-blog': this.blogSectionsList
       });
       app.layout.render();
     },
 
     initialize: function() {
-      this.webAboutSections = new Sections.WebCollection();
-      this.sqlAboutSections = new Sections.WebSQLCollection();
-      this.aboutSectionsList = new Sections.Views.List({
-        id: 'about',
+      this.aboutSections = new Static.Views.AboutView();
+      this.webBlogSections = new Sections.WebCollection();
+      this.sqlBlogSections = new Sections.WebSQLCollection();
+      this.blogSectionsList = new Sections.Views.List({
+        id: 'blog',
         title: 'From the Four Kitchens Blog',
-        collection: this.sqlAboutSections
+        collection: this.sqlBlogSections
       });
 
-      this.sqlAboutSections.fetch({
-        success: _.bind(this.fetchWebAboutSections, this),
-        error: _.bind(this.fetchWebAboutSections, this)
+      this.sqlBlogSections.fetch({
+        success: _.bind(this.fetchWebBlogSections, this),
+        error: _.bind(this.fetchWebBlogSections, this)
       });
 
       app.useLayout('main');
       app.layout.setViews({
-        '#page': this.aboutSectionsList
+        '#page-about': this.aboutSections,
+        '#page-blog': this.blogSectionsList
       });
 
       if (Modernizr.touch) {
         $(document).ready(function(){
-          window.mySwipe = new Swipe(document.getElementById('main'), {
+          window.mySwipe = new Swipe(document.getElementById('layout'), {
             speed: 400,
             callback: function(event, index, elem) {
               $('html, body').animate({ scrollTop: 0 }, 'fast');
@@ -52,8 +56,8 @@ function(_, app, Sections) {
       }
     },
 
-    fetchWebAboutSections: function() {
-      this.webAboutSections.fetch({
+    fetchWebBlogSections: function() {
+      this.webBlogSections.fetch({
         /**
          * Checks to see if the entities from the web have already
          * been stored in WeBSQL. If not, store them there and update
@@ -61,8 +65,8 @@ function(_, app, Sections) {
          */
         success: _.bind(function(collection, response, options) {
           response.forEach(_.bind(function(section) {
-            if (this.sqlAboutSections.where({ guid: section.guid }).length === 0) {
-              this.sqlAboutSections.create(section);
+            if (this.sqlBlogSections.where({ guid: section.guid }).length === 0) {
+              this.sqlBlogSections.create(section);
             }
           }, this));
         }, this)
