@@ -187,7 +187,7 @@ module.exports = function(grunt) {
         tasks: "compass:dev compass:prod mincss"
       },
       requirejs: {
-        files: ["grunt.js", "app/**/*.js"],
+        files: ["grunt.js", "app/**/*.js", "app/templates/**/*.html"],
         tasks: "lint handlebars requirejs concat min"
       }
     }

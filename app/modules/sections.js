@@ -6,8 +6,9 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
     defaults: function() {
       return {
         title: 'Four Kitchens',
-        summary: 'Brooklyn magna eros at diam risus Portland massa quisque lectus porta at cred quam eget arcu orci. Eget Toms molestie et eget non odio VHS lorem pharetra fusce at quam bahn mi tempus congue tellus tellus mattis. PBR sodales vulputate vitae eu pellentesque undefined tellus justo sed arcu et wire-rimmed glasses morbi vivamus non. Urna gravida artisan non donec pellentesque congue vivamus DIY quisque maecenas eros a tempus tofu sagittis. Mauris non integer sagittis organic orci curabitur cursus vivamus nibh tattoo sagittis lorem justo massa quisque Austin tempus. Eu sem ut eu farm-to-table fusce tempus integer proin malesuada specs in in eu sodales quam vegan. Orci porttitor urna amet integer Austin ipsum vulputate proin justo ut DIY orci molestie elementum proin vulputate.',
-        image: 'http://2.bp.blogspot.com/_1xHCqFHSKVo/TB6GjhWbroI/AAAAAAAAAmw/JbSwcHF3Kgg/s1600/rainbow-cat.jpg'
+        link: 'http://fourkitchens.com/blog',
+        description: 'Brooklyn magna eros at diam risus Portland massa quisque lectus porta at cred quam eget arcu orci. Eget Toms molestie et eget non odio VHS lorem pharetra fusce at quam bahn mi tempus congue tellus tellus mattis. PBR sodales vulputate vitae eu pellentesque undefined tellus justo sed arcu et wire-rimmed glasses morbi vivamus non. Urna gravida artisan non donec pellentesque congue vivamus DIY quisque maecenas eros a tempus tofu sagittis. Mauris non integer sagittis organic orci curabitur cursus vivamus nibh tattoo sagittis lorem justo massa quisque Austin tempus. Eu sem ut eu farm-to-table fusce tempus integer proin malesuada specs in in eu sodales quam vegan. Orci porttitor urna amet integer Austin ipsum vulputate proin justo ut DIY orci molestie elementum proin vulputate.',
+        date: new Date(1984, 7, 27)
       };
     },
     sync: Backbone.WebSQLSync
@@ -15,13 +16,16 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
 
   Sections.WebCollection = Backbone.Collection.extend({
     model: Sections.Model,
-    url: '/sample.json'
+    url: '/server/feed'
   });
 
   Sections.WebSQLCollection = Backbone.Collection.extend({
     model: Sections.Model,
     store: new WebSQLStore(db, 'sections'),
     sync: Backbone.WebSQLSync,
+    comparator: function(section) {
+      return section.get('date');
+    },
     fetch: function(options) {
       options = options ? _.clone(options) : {};
       if (options.parse === undefined) options.parse = true;
@@ -57,11 +61,20 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
   });
 
   Sections.Views.List = Backbone.View.extend({
-    tagName: 'section',
+    template: 'section',
+
+    events: {
+      'click .refresh': 'refresh'
+    },
+
+    serialize: function() {
+      return {
+        id: this.id,
+        title: this.options.title
+      };
+    },
 
     beforeRender: function() {
-      this.$el.attr('id', this.id);
-      this.$el.children().remove();
       this.collection.each(function(box) {
         this.insertView(new Sections.Views.Item({
           model: box
@@ -69,7 +82,17 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
       }, this);
     },
 
-    cleanup: function() {
+    refresh: function(e) {
+      e.preventDefault();
+      $(e.currentTarget).addClass('working');
+      this.collection.fetch({
+        success: function() {
+          $(e.currentTarget).removeClass('working');
+        },
+        error: function() {
+          $(e.currentTarget).removeClass('working');
+        }
+      });
     },
 
     addSection: function(section) {
