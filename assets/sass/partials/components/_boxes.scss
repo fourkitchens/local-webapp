@@ -23,6 +23,11 @@
     max-height: 200px;
     float: left;
     margin-right: 1em;
+
+    &.logo {
+      max-width: 100%;
+      max-height: none;
+    }
   }
 
   h2 {
