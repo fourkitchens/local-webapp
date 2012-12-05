@@ -57,7 +57,19 @@ function(_, $, app, Sections, Static) {
           scrollbars: false,
           scrollingY: false,
           snapping: true,
-          paginatedSnap: true
+          paginatedSnap: true,
+          bouncing: false,
+          updateOnWindowResize: true
+        });
+        scroller.addEventListener('segmentdidchange', function(segment) {
+          $('html, body').animate({ scrollTop: 0 }, 'fast');
+        });
+        var sectionScrollers = {};
+        _.keys(pages).forEach(function(id) {
+          sectionScrollers[id] = new FTScroller(document.getElementById(id), {
+            scrollingX: false,
+            updateOnWindowResize: true
+          });
         });
       });
     },
