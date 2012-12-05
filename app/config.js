@@ -15,7 +15,7 @@ require.config({
     lodash: '../assets/js/libs/lodash',
     backbone: '../assets/js/libs/backbone',
     handlebars: '../assets/js/libs/handlebars-1.0.0.beta.6',
-    swipe: '../assets/js/libs/swipe'
+    ftscroller: '../assets/js/libs/ftscroller'
   },
 
   shim: {

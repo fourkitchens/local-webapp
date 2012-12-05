@@ -4,7 +4,7 @@ define([
   'lodash',
   'backbone',
   'handlebars',
-  'swipe',
+  'ftscroller',
 
   // Plugins.
   'plugins/backbone.layoutmanager',

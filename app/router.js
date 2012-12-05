@@ -1,12 +1,14 @@
 define([
   'lodash',
+  'jquery',
+
   // Application.
   'app',
   'modules/sections',
   'modules/static'
 ],
 
-function(_, app, Sections, Static) {
+function(_, $, app, Sections, Static) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -16,7 +18,7 @@ function(_, app, Sections, Static) {
 
     index: function() {
       app.useLayout('main');
-      app.layout.setViews({
+      var pages = {
         '#page-about': this.aboutSections,
         '#page-executive-summary': this.executiveSummary,
         '#page-about-4k': this.about4K,
@@ -29,16 +31,33 @@ function(_, app, Sections, Static) {
         '#page-references': this.references,
         '#page-web-chefs': this.webChefs,
         '#page-blog': this.blogSectionsList
-      });
+      };
+      app.layout.setViews(pages);
       app.layout.render(function(el) {
-        if (Modernizr.touch) {
-          window.mySwipe = new Swipe(document.getElementById('layout'), {
-            speed: 400,
-            callback: function(event, index, elem) {
-              $('html, body').animate({ scrollTop: 0 }, 'fast');
-            }
-          });
-        }
+        $('#layout').css({
+          'white-space': 'nowrap',
+          width: '100%',
+          overflow: 'hidden'
+        });
+        var sectionWidth = $('#layout').width();
+        $('.sections').css({
+          width: sectionWidth * _.keys(pages).length + 'px',
+          display: 'table'
+        });
+        $('.sections section').css({
+           width: sectionWidth,
+           display: 'inline-block',
+           'vertical-align': 'top'
+        });
+        $('.sections section div').css({
+          overflow: 'hidden',
+          'white-space': 'normal'
+        });
+        var scroller = new FTScroller(document.getElementById('layout'), {
+          scrollbars: false,
+          scrollingX: false,
+          snapping: true
+        });
       });
     },
 
