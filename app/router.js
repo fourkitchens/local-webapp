@@ -55,8 +55,9 @@ function(_, $, app, Sections, Static) {
         });
         var scroller = new FTScroller(document.getElementById('layout'), {
           scrollbars: false,
-          scrollingX: false,
-          snapping: true
+          scrollingY: false,
+          snapping: true,
+          paginatedSnap: true
         });
       });
     },
