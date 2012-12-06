@@ -54,21 +54,20 @@ function(_, $, app, Sections, Static) {
           'white-space': 'normal'
         });
         var scroller = new FTScroller(document.getElementById('layout'), {
-          scrollbars: false,
           scrollingY: false,
+          scrollbars: false,
           snapping: true,
-          paginatedSnap: true,
-          bouncing: false,
-          updateOnWindowResize: true
+          scrollBoundary: 10,
+          bouncing: false
         });
         scroller.addEventListener('segmentdidchange', function(segment) {
           $('html, body').animate({ scrollTop: 0 }, 'fast');
         });
         var sectionScrollers = {};
         _.keys(pages).forEach(function(id) {
-          sectionScrollers[id] = new FTScroller(document.getElementById(id), {
+          sectionScrollers[id] = new FTScroller(document.getElementById(id.replace(/^#/, '')), {
             scrollingX: false,
-            updateOnWindowResize: true
+            scrollBoundary: 4
           });
         });
       });
