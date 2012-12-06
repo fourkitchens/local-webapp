@@ -1,3 +1,5 @@
+var FTScrollerOptions = {};
+
 define([
   'lodash',
   'jquery',
@@ -53,22 +55,31 @@ function(_, $, app, Sections, Static) {
           overflow: 'hidden',
           'white-space': 'normal'
         });
+        FTScrollerOptions.windowScrollingActiveFlag = 'scrolling';
+        var sectionScrollers = {};
+        var sectionKeys = _.keys(pages);
         var scroller = new FTScroller(document.getElementById('layout'), {
           scrollingY: false,
           scrollbars: false,
           snapping: true,
+          paginatedSnapping: true,
           scrollBoundary: 10,
           bouncing: false
         });
         scroller.addEventListener('segmentdidchange', function(segment) {
+          var id = sectionKeys[segment.segmentX];
+          if (typeof sectionScrollers[id] === 'undefined') {
+            sectionScrollers[id] = new FTScroller(document.getElementById(id.replace(/^#/, '')), {
+              scrollingX: false,
+              scrollBoundary: 4
+            });
+          }
           $('html, body').animate({ scrollTop: 0 }, 'fast');
         });
-        var sectionScrollers = {};
-        _.keys(pages).forEach(function(id) {
-          sectionScrollers[id] = new FTScroller(document.getElementById(id.replace(/^#/, '')), {
-            scrollingX: false,
-            scrollBoundary: 4
-          });
+        var firstID = sectionKeys[0];
+        sectionScrollers[firstID] = new FTScroller(document.getElementById(firstID.replace(/^#/, '')), {
+          scrollingX: false,
+          scrollBoundary: 4
         });
       });
     },
