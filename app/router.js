@@ -63,7 +63,7 @@ function(_, $, app, Sections, Static) {
           scrollbars: false,
           snapping: true,
           paginatedSnap: true,
-          scrollBoundary: 10,
+          scrollBoundary: 20,
           bouncing: false
         });
         scroller.addEventListener('segmentdidchange', function(segment) {
