@@ -66,21 +66,11 @@ function(_, $, app, Sections, Static) {
           scrollBoundary: 20,
           bouncing: false
         });
-        scroller.addEventListener('segmentdidchange', function(segment) {
-          var id = sectionKeys[segment.segmentX];
-          if (typeof sectionScrollers[id] === 'undefined') {
-            sectionScrollers[id] = new FTScroller(document.getElementById(id.replace(/^#/, '')), {
-              scrollingX: false,
-              scrollBoundary: 4
-            });
-          }
-          $('#layout').height($(id).height());
-          $('html, body').animate({ scrollTop: 0 }, 'fast');
-        });
-        var firstID = sectionKeys[0];
-        sectionScrollers[firstID] = new FTScroller(document.getElementById(firstID.replace(/^#/, '')), {
-          scrollingX: false,
-          scrollBoundary: 4
+        sectionKeys.forEach(function(id) {
+          sectionScrollers[id] = new FTScroller(document.getElementById(id.replace(/^#/, '')), {
+            scrollingX: false,
+            scrollBoundary: 4
+          });
         });
       });
     },
