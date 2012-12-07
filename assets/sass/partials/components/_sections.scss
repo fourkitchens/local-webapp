@@ -6,3 +6,12 @@
 #page > section {
   padding-bottom: 2 * $ui-spacing;
 }
+
+.sections {
+  overflow: hidden;
+  section {
+    display: inline-block;
+    white-space: normal;
+    vertical-align: top;
+  }
+}

@@ -36,28 +36,22 @@ function(_, $, app, Sections, Static) {
       };
       app.layout.setViews(pages);
       app.layout.render(function(el) {
-        $('#layout').css({
-          'white-space': 'nowrap',
-          width: '100%',
-          overflow: 'hidden'
-        });
         var sectionWidth = $('#layout').width();
         $('.sections').css({
-          width: sectionWidth * _.keys(pages).length + 'px',
-          display: 'table'
+          width: sectionWidth * _.keys(pages).length + 'px'
         });
         $('.sections section').css({
-           width: sectionWidth,
-           display: 'inline-block',
-           'vertical-align': 'top'
-        });
-        $('.sections section > div').css({
-          overflow: 'hidden',
-          'white-space': 'normal'
+           width: sectionWidth
         });
         FTScrollerOptions.windowScrollingActiveFlag = 'scrolling';
         var sectionScrollers = {};
         var sectionKeys = _.keys(pages);
+        sectionKeys.forEach(function(id) {
+          sectionScrollers[id] = new FTScroller(document.getElementById(id.replace(/^#/, '')), {
+            scrollingX: false,
+            scrollBoundary: 4
+          });
+        });
         var scroller = new FTScroller(document.getElementById('layout'), {
           scrollingY: false,
           scrollbars: false,
@@ -68,12 +62,6 @@ function(_, $, app, Sections, Static) {
         });
         scroller.addEventListener('segmentdidchange', function(segment) {
           var id = sectionKeys[segment.segmentX];
-          if (typeof sectionScrollers[id] === 'undefined') {
-            sectionScrollers[id] = new FTScroller(document.getElementById(id.replace(/^#/, '')), {
-              scrollingX: false,
-              scrollBoundary: 4
-            });
-          }
           $('#layout').height($(id).height());
           $('html, body').animate({ scrollTop: 0 }, 'fast');
         });
