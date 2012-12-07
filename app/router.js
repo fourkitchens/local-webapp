@@ -51,7 +51,7 @@ function(_, $, app, Sections, Static) {
            display: 'inline-block',
            'vertical-align': 'top'
         });
-        $('.sections section div').css({
+        $('.sections section > div').css({
           overflow: 'hidden',
           'white-space': 'normal'
         });
@@ -62,7 +62,7 @@ function(_, $, app, Sections, Static) {
           scrollingY: false,
           scrollbars: false,
           snapping: true,
-          paginatedSnapping: true,
+          paginatedSnap: true,
           scrollBoundary: 10,
           bouncing: false
         });
@@ -74,6 +74,7 @@ function(_, $, app, Sections, Static) {
               scrollBoundary: 4
             });
           }
+          $('#layout').height($(id).height());
           $('html, body').animate({ scrollTop: 0 }, 'fast');
         });
         var firstID = sectionKeys[0];
