@@ -5,7 +5,8 @@
   "dependencies": {
     "union": "0.3.0",
     "flatiron": "0.3.0",
-    "feedparser": "~0.10.9"
+    "feedparser": "~0.10.9",
+    "img64": "~0.1.1"
   },
   "devDependencies": {
     "api-easy": "0.3.2",

@@ -1,5 +1,6 @@
 var flatiron = require('flatiron'),
     path = require('path'),
+    img64 = require('img64'),
     app = flatiron.app;
 
 app.config.file({ file: path.join(__dirname, 'config', 'config.json') });
@@ -19,7 +20,24 @@ app.router.get('/feed', function() {
       self.res.end();
       return;
     }
-    self.res.json(articles);
+    // Convert images to base64 encoded images.
+    var converted = 0;
+    articles.forEach(function(article, i) {
+      img64.convertRemoteImgs(article.description, function(err, doc) {
+        if (err) {
+          app.log.error(err);
+        }
+        articles[i].description = doc;
+        app.emit('converted');
+      });
+    });
+
+    app.on('converted', function() {
+      converted++;
+      if (converted === articles.length) {
+        self.res.json(articles);
+      }
+    });
   });
 });
 
