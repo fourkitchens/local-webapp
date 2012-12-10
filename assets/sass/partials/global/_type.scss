@@ -22,6 +22,7 @@ body {
 }
 
 h1 {
+  font-family: $bryant;
   // Sets the font-size and line-height while keeping a proper vertical rhythm.
   @include adjust-font-size-to( $h1-font-size );
 
@@ -34,6 +35,7 @@ h1 {
 }
 
 h2 {
+  font-family: $bryant;
   @include adjust-font-size-to( $h2-font-size );
   @include leader(0, $h2-font-size);
   @include trailer(0, $h2-font-size);
@@ -43,6 +45,7 @@ h2 {
 }
 
 h3 {
+  font-family: $bryant;
   @include adjust-font-size-to( $h3-font-size );
   @include leader(0, $h3-font-size);
   @include trailer(0, $h3-font-size);
