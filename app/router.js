@@ -10,7 +10,7 @@ define([
 function(_, app, Sections, Static, Menu) {
 
   // Defining the application router, you can attach sub routers here.
-  var Router = app.router = Backbone.Router.extend({
+  var Router = Backbone.Router.extend({
     routes: {
       '': 'index',
       ':page': 'page'
@@ -158,7 +158,8 @@ function(_, app, Sections, Static, Menu) {
       this.blogSectionsList = new Sections.Views.List({
         id: 'blog',
         title: 'From the Four Kitchens Blog',
-        collection: this.sqlBlogSections
+        collection: this.sqlBlogSections,
+        webCollection: this.webBlogSections
       });
        this.tocItems.create({
         title: 'From the Four Kitchens Blog',

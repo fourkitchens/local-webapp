@@ -84,8 +84,11 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
 
     refresh: function(e) {
       e.preventDefault();
+      // Prevents the router from getting involved.
+      e.stopImmediatePropagation();
+
       $(e.currentTarget).addClass('working');
-      this.collection.fetch({
+      this.options.webCollection.fetch({
         success: function() {
           $(e.currentTarget).removeClass('working');
         },
@@ -104,9 +107,23 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
       this.$el.append(view.$el);
     },
 
+    webAdd: function(section) {
+      if (this.collection.where({ guid: section.get('guid') }).length === 0) {
+        this.collection.create(section.toJSON());
+      }
+    },
+
+    webReset: function(collection) {
+      collection.each(function(section) {
+        this.webAdd(section);
+      }, this);
+    },
+
     initialize: function() {
       this.collection.on('reset', this.render, this);
       this.collection.on('add', this.addSection, this);
+      this.options.webCollection.on('reset', this.webReset, this);
+      this.options.webCollection.on('add', this.webAdd, this);
     }
   });
 
