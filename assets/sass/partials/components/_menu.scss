@@ -1,0 +1,23 @@
+/**
+ * Table of contents partial.
+ */
+#menu {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  padding: .25em;
+  background-color: white;
+  .menu-wrapper {
+    display: none;
+  }
+  .menu-handles {
+    float: right;
+    ul {
+      list-style: none;
+      .handle {
+        cursor: pointer;
+      }
+    }
+  }
+}
