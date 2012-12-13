@@ -6,7 +6,7 @@
     "union": "0.3.0",
     "flatiron": "0.3.0",
     "feedparser": "~0.10.9",
-    "img64": "~0.1.1"
+    "img64": "~0.2.0"
   },
   "devDependencies": {
     "api-easy": "0.3.2",

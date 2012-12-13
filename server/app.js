@@ -23,7 +23,7 @@ app.router.get('/feed', function() {
     // Convert images to base64 encoded images.
     var converted = 0;
     articles.forEach(function(article, i) {
-      img64.convertRemoteImgs(article.description, function(err, doc) {
+      img64.encodeImgs(article.description, function(err, doc) {
         if (err) {
           app.log.error(err);
         }
