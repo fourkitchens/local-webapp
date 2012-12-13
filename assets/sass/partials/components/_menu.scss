@@ -12,16 +12,32 @@
     @extend .clearfix;
   }
 
-  .menu-wrapper {
-    display: none;
-    h3 {
-      font-family: $bryant;
-      padding: ($ui-spacing / 2) $ui-spacing ($ui-spacing / 4) $ui-spacing;
-      border-bottom: 1px solid #999;
+  .logo {
+    padding: ($ui-spacing / 2) $ui-spacing;
+    float: left;
+    max-width: 70%;
+    img {
+      max-width: 100%;
+      max-height: 48px;
+      width: auto;
+      height: auto;
     }
   }
+
+  .menu-wrapper {
+    display: none;
+    clear: both;
+  }
+
+  .title-wrapper {
+    padding: ($ui-spacing / 2) $ui-spacing ($ui-spacing / 4) $ui-spacing;
+    border-bottom: 1px solid $color-fk;
+
+    h3 { font-family: $bryant; }
+  }
+
   .menu-handles {
-    padding: ($ui-spacing / 2) $ui-spacing;
+    padding: $ui-spacing $ui-spacing ($ui-spacing / 2) $ui-spacing;
     float: right;
 
     ul {
@@ -50,12 +66,15 @@
 
   #toc {
     @extend .listreset;
+    border-bottom: 3px solid $color-fk;
+
     li {
       display: block;
       padding: ($ui-spacing / 2) $ui-spacing;
       border-bottom: 1px dotted #ddd;
 
       a { text-decoration: none; }
+      &:last-child { border-bottom: 0; }
     }
   }
 }
