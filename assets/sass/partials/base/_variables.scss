@@ -61,14 +61,18 @@ $arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
 // Project-specific fonts
 // Put any font families here that are specific to your project.
 
+// Taken from fourkitchens/fourkitchens-d7 Stiletto theme
+$helvetica-neue:  "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", sans-serif;
+$bryant:          "bryant-web-1","bryant-web-2", $helvetica-neue;
+$adelle:          "adelle-1", "adelle-2", $georgia;
 
 // For an explanation of why "sans-serif" is at the end of this list, see
 // http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
 $courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
 
 // Now create some variables for the font stacks we want to use on this site.
-$base-font-family: $georgia; // The font family set on the html element.
-$font-body:        $verdana;
+$base-font-family: $helvetica; // The font family set on the html element.
+$font-body:        $helvetica-neue;
 $font-monospace:   $courier;
 $form-font-family: $arial;
 

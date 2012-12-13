@@ -8,7 +8,8 @@
   @include clearfix;
   margin: $ui-spacing;
   padding: $ui-spacing;
-  border: 1px solid #333;
+  border: 1px solid #DDD;
+  border-radius: 5px;
   background: #fff;
 
   img {
@@ -30,5 +31,20 @@
 
   .content {
     margin-left: 200px;
+  }
+
+  &.headline {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: $color-fk;
+    color: white;
+
+    #{headings()} {
+      color: white;
+      font-family: $bryant;
+    }
+
+    a { color: white; }
   }
 }

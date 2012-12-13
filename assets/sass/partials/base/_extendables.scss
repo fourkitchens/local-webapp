@@ -4,3 +4,12 @@
 // All of your extendable classes, ids, and placeholder extendables
 //   should go in this file.
 ////////////////////////
+
+// For times when we need to totally reset list styles
+.listreset {
+  &, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
