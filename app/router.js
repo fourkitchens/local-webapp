@@ -24,13 +24,6 @@ function(_, app, Sections, Static, Menu) {
         '#page-executive-summary': this.executiveSummary,
         '#page-about-4k': this.about4K,
         '#page-process': this.process,
-        '#page-vision': this.vision,
-        '#page-scope': this.scope,
-        '#page-timeline': this.timeline,
-        '#page-time-cost': this.timeCost,
-        '#page-case-studies': this.caseStudies,
-        '#page-references': this.references,
-        '#page-web-chefs': this.webChefs,
         '#page-blog': this.blogSectionsList
       };
 
