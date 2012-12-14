@@ -3,6 +3,27 @@
  * - Boxes make up one unit of content within the UI
  */
 
+@include keyframes(slide) {
+  0% {
+    @include translateX($ui-spacing * -2);
+  }
+  50% {
+    @include translateX($ui-spacing * 4);
+  }
+  100% {
+    @include translateX($ui-spacing * -2);
+  }
+}
+
+img.swipe {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: $ui-spacing;
+  display: block;
+  @include animation(slide 5s infinite);
+}
+
 .box {
   @include clearfix;
   margin: $ui-spacing;
@@ -17,9 +38,8 @@
     float: left;
     margin-right: 1em;
 
-    &.logo {
-      max-width: 100%;
-      max-height: none;
+    &.save-to-desktop {
+      float: none;
     }
 
     &.thanks {
