@@ -45,5 +45,9 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
     template: 'web-chefs'
   });
 
+  Static.Views.ThanksView = Backbone.View.extend({
+    template: 'thanks'
+  });
+
   return Static;
 });
