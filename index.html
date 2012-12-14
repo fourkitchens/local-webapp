@@ -17,6 +17,6 @@
   </head>
   <body>
     <div id="main"></div>
-    <script src="/dist/debug/require.js"></script>
+    <script src="/dist/release/require.js"></script>
   </body>
 </html>
