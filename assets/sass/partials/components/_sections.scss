@@ -3,6 +3,13 @@
  * A section is a "page" of content within the UI
  */
 
+// HACK! If scrollbars are removd after swipe is added
+// the width of the content will be wrong. We'll undo
+// this in JS :(.
+body {
+  overflow: hidden;
+}
+
 #page > section {
   padding-bottom: 2 * $ui-spacing;
 }

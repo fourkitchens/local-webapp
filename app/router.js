@@ -22,7 +22,6 @@ function(_, app, Sections, Static, Menu) {
         '#menu': this.menu,
         '#page-about': this.aboutSections,
         '#page-executive-summary': this.executiveSummary,
-        '#page-about-4k': this.about4K,
         '#page-process': this.process,
         '#page-blog': this.blogSectionsList,
         '#page-thanks': this.thanks
@@ -47,6 +46,7 @@ function(_, app, Sections, Static, Menu) {
             }, this)
           });
         }
+        $('body').css({ overflow: 'auto' });
       }, this));
     },
 
@@ -84,18 +84,11 @@ function(_, app, Sections, Static, Menu) {
         pageIndex: 1
       });
 
-      this.about4K = new Static.Views.About4KView();
-      this.tocItems.create({
-        title: 'Neat Huh?',
-        id: 'page-about-4k',
-        pageIndex: 2
-      });
-
       this.process = new Static.Views.ProcessView();
       this.tocItems.create({
-        title: 'About the Blog',
+        title: 'Neat Huh?',
         id: 'page-process',
-        pageIndex: 3
+        pageIndex: 2
       });
 
       this.webBlogSections = new Sections.WebCollection();
@@ -109,7 +102,7 @@ function(_, app, Sections, Static, Menu) {
       this.tocItems.create({
         title: 'From the Four Kitchens Blog',
         id: 'page-blog',
-        pageIndex: 4
+        pageIndex: 3
       });
 
       this.sqlBlogSections.fetch({
@@ -121,7 +114,7 @@ function(_, app, Sections, Static, Menu) {
       this.tocItems.create({
         title: 'Thanks!',
         id: 'page-thanks',
-        pageIndex: 5
+        pageIndex: 4
       });
 
     },

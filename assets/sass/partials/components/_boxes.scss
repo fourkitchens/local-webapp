@@ -3,7 +3,6 @@
  * - Boxes make up one unit of content within the UI
  */
 
-
 .box {
   @include clearfix;
   margin: $ui-spacing;
@@ -35,10 +34,6 @@
   h2 {
     font-size: 1.6em;
     font-weight: 700;
-  }
-
-  .content {
-    margin-left: 200px;
   }
 
   &.headline {

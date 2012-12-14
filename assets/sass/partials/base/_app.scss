@@ -3,3 +3,11 @@
 //
 
 $ui-spacing: 1em;
+
+.geshifilter {
+  padding: $ui-spacing;
+  border: 1px solid #DDD;
+  background-color: #EEE;
+  overflow: auto;
+  font-size: 8px;
+}
