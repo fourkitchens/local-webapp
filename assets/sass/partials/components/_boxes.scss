@@ -70,4 +70,28 @@ img.swipe {
 
     a { color: white; }
   }
+
+  .prev,
+  .next {
+    padding: 0.3em 0.6em;
+    border: 1px dotted #ddd;
+    background-color: #eee;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+
+    &:hover {
+      background-color: #ddd;
+      border-color: #ccc;
+    }
+  }
+  .prev {
+    float: left;
+  }
+  .next {
+    float: right;
+  }
 }

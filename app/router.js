@@ -30,20 +30,34 @@ function(_, app, Sections, Static, Menu) {
       app.layout.setViews(views);
       app.layout.render(_.bind(function(el) {
         this.rendered = true;
-        if (Modernizr.touch) {
-          app.mySwipe = new Swipe(document.getElementById('pages'), {
-            speed: 400,
-            callback: _.bind(function(event, index, elem) {
-              $('html, body').animate({ scrollTop: 0 }, 'fast');
+        app.mySwipe = new Swipe(document.getElementById('pages'), {
+          speed: 400,
+          callback: _.bind(function(event, index, elem) {
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
 
-              var pages = this.tocItems.where({ pageIndex: index });
-              if (typeof pages[0] !== 'undefined') {
-                this.navigate(pages[0].id, { trigger: false, replace: true });
-              }
-              else {
-                this.navigate('', { trigger: false, replace: true });
-              }
-            }, this)
+            var pages = this.tocItems.where({ pageIndex: index });
+            if (typeof pages[0] !== 'undefined') {
+              this.navigate(pages[0].id, { trigger: false, replace: true });
+            }
+            else {
+              this.navigate('', { trigger: false, replace: true });
+            }
+          }, this)
+        });
+        if (!Modernizr.touch) {
+          var self = this;
+          $('.swipe').remove();
+          var $section = $('section');
+          $section.append('<div class="box"><div class="prev">&laquo; Previous</div><div class="next">Next &raquo;</div></div>');
+          $('.prev', $($section[0])).remove();
+          $('.next', $($section[$section.length - 1])).remove();
+          $('.prev').click(function(e) {
+            var page = self.tocItems.get($(this).parents('section')[0].id);
+            app.mySwipe.slide(page.get('pageIndex') - 1);
+          });
+          $('.next').click(function(e) {
+            var page = self.tocItems.get($(this).parents('section')[0].id);
+            app.mySwipe.slide(page.get('pageIndex') + 1);
           });
         }
         $('body').css({ overflow: 'auto' });
