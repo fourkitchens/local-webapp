@@ -102,9 +102,9 @@ $color-fk       : #66B360;
 
 
 // Base color variables.
-$link           : #2090B4;
+$link           : $color-fk;
 $visited        : $link;
-$selection-bg   : #66B360;
+$selection-bg   : $color-fk;
 $selection      : $white;
 
 // The amount lists, blockquotes and comments are indented.
