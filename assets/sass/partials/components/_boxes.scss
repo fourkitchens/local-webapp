@@ -22,6 +22,14 @@
       max-width: 100%;
       max-height: none;
     }
+
+    &.thanks {
+      max-width: none;
+      max-height: none;
+      width: 100%;
+      float: none;
+      margin-right: none;
+    }
   }
 
   h2 {

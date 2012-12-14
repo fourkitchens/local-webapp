@@ -24,7 +24,8 @@ function(_, app, Sections, Static, Menu) {
         '#page-executive-summary': this.executiveSummary,
         '#page-about-4k': this.about4K,
         '#page-process': this.process,
-        '#page-blog': this.blogSectionsList
+        '#page-blog': this.blogSectionsList,
+        '#page-thanks': this.thanks
       };
 
       app.layout.setViews(views);
@@ -78,72 +79,23 @@ function(_, app, Sections, Static, Menu) {
 
       this.executiveSummary = new Static.Views.ExecutiveSummaryView();
       this.tocItems.create({
-        title: 'Executive Summary',
+        title: 'It Works Offline!',
         id: 'page-executive-summary',
         pageIndex: 1
       });
 
       this.about4K = new Static.Views.About4KView();
       this.tocItems.create({
-        title: 'About Four Kitchens',
+        title: 'Neat Huh?',
         id: 'page-about-4k',
         pageIndex: 2
       });
 
       this.process = new Static.Views.ProcessView();
       this.tocItems.create({
-        title: 'Our Process',
+        title: 'About the Blog',
         id: 'page-process',
         pageIndex: 3
-      });
-
-      this.vision = new Static.Views.VisionView();
-      this.tocItems.create({
-        title: 'Project Vision',
-        id: 'page-vision',
-        pageIndex: 4
-      });
-
-      this.scope = new Static.Views.ScopeView();
-      this.tocItems.create({
-        title: 'Project Scope',
-        id: 'page-scope',
-        pageIndex: 5
-      });
-
-      this.timeline = new Static.Views.TimelineView();
-      this.tocItems.create({
-        title: 'Phased Timeline',
-        id: 'page-timeline',
-        pageIndex: 6
-      });
-
-      this.timeCost = new Static.Views.TimeCostView();
-      this.tocItems.create({
-        title: 'Time and Cost Estimates',
-        id: 'page-time-cost',
-        pageIndex: 7
-      });
-
-      this.caseStudies = new Static.Views.CaseStudiesView();
-      this.tocItems.create({
-        title: 'Case Studies',
-        id: 'page-case-studies',
-        pageIndex: 8
-      });
-
-      this.references = new Static.Views.ReferencesView();
-      this.tocItems.create({
-        title: 'References',
-        id: 'page-references',
-        pageIndex: 9
-      });
-
-      this.webChefs = new Static.Views.WebChefsView();
-      this.tocItems.create({
-        title: 'Meet the Web Chefs',
-        id: 'page-web-chefs',
-        pageIndex: 10
       });
 
       this.webBlogSections = new Sections.WebCollection();
@@ -154,15 +106,22 @@ function(_, app, Sections, Static, Menu) {
         collection: this.sqlBlogSections,
         webCollection: this.webBlogSections
       });
-       this.tocItems.create({
+      this.tocItems.create({
         title: 'From the Four Kitchens Blog',
         id: 'page-blog',
-        pageIndex: 11
+        pageIndex: 4
       });
 
       this.sqlBlogSections.fetch({
         success: _.bind(this.fetchWebBlogSections, this),
         error: _.bind(this.fetchWebBlogSections, this)
+      });
+
+      this.thanks = new Static.Views.ThanksView();
+      this.tocItems.create({
+        title: 'Thanks!',
+        id: 'page-thanks',
+        pageIndex: 5
       });
 
     },
