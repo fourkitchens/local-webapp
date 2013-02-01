@@ -3,6 +3,8 @@
  * - Boxes make up one unit of content within the UI
  */
 
+@import 'animation';
+
 @include keyframes(slide) {
   0% {
     @include translateX($ui-spacing * -2);

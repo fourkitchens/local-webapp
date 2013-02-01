@@ -74,7 +74,10 @@ module.exports = function(grunt) {
         dest: 'dist/debug',
         linecomments: true,
         forcecompile: true,
-        require: 'aurora',
+        require: [
+          'aurora',
+          'animation'
+        ],
         debugsass: true,
         images: 'assets/images',
         relativeassets: true
@@ -85,7 +88,10 @@ module.exports = function(grunt) {
         outputstyle: 'compressed',
         linecomments: false,
         forcecompile: true,
-        require: 'aurora',
+        require: [
+          'aurora',
+          'animation'
+        ],
         debugsass: false,
         images: 'assets/images',
         relativeassets: true
