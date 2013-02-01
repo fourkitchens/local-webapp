@@ -41,6 +41,16 @@ define([ ], function() {
         title: 'Time and Cost Estimates', // The title to display in the app menu.
         id: 'page-estimates', // The ID from the template to anchor the menu to. This should be unique.
         template: 'static/60-estimates' // The template to use.
+      },
+      {
+        title: 'References', // The title to display in the app menu.
+        id: 'page-references', // The ID from the template to anchor the menu to. This should be unique.
+        template: 'static/70-references' // The template to use.
+      },
+      {
+        title: 'Meet the Web Chefs', // The title to display in the app menu.
+        id: 'page-webchefs', // The ID from the template to anchor the menu to. This should be unique.
+        template: 'static/80-webchefs' // The template to use.
       }
     ]
   };
