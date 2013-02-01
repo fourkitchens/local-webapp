@@ -74,6 +74,7 @@ h6 {
 // Line Length Adjustment
 p, li {
   max-width: 45em;
+  #menu & { max-width: none; }
 }
 
 // Various Paragraph Styles
