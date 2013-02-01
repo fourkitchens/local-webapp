@@ -1,5 +1,9 @@
 # Ignore everything in this directory
-*
+# *
 # Except this file and the README
-!.gitignore
-!README.md
+# !.gitignore
+# !README.md
+
+#
+# -- This branch will _include_ all template files.
+#
