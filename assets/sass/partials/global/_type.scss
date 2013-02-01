@@ -3,9 +3,12 @@
 */
 
 body {
+  // These were set as fixed pixels; that causes issues
+  // with font-sizes on high-density devices and causes/
+  // line-height errors on areas with bigger type.
   font-family: $font-body;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  font-size: 1em;     // was $base-font-size;
+  line-height: 1.375; // was $base-line-height;
   color: #333;
 }
 
@@ -72,6 +75,30 @@ h6 {
 p, li {
   max-width: 45em;
 }
+
+// Various Paragraph Styles
+p.question {
+  color: #666;
+  font-style: italic;
+}
+
+p.callout {
+  color: $color-fk;
+  
+  
+  font-family: $bryant;
+  font-size: (24em/16);
+  font-style: italic;
+  font-weight: bold;
+  
+  max-width: 30em; 
+
+  padding: 0.375em 0;
+  border-top: 2px solid $color-fk;
+  border-bottom: 2px solid $color-fk;
+}
+
+
 
 // Links
 //

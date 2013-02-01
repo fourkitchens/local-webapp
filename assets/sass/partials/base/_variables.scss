@@ -25,6 +25,10 @@ $legacy-support-for-ie8: true;
 // use in the normalize.scss file.
 // @see http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
+// In _type.scss, these are hardcoded as 1em/1.375.
+// Going forward, we should look at how to better handle this because
+// we shouldn't be using pixels. The math functions equate these out to
+// ems on all the heading tags, but body defaults back down to pixels.
 $base-font-size:   16px; // The font size set on the root html element.
 $base-line-height: 24px; // This line-height determines the basic unit of vertical rhythm.
 
