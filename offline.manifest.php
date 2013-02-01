@@ -1,5 +1,4 @@
 <?php
-exit;
 header("Content-Type: text/cache-manifest");
 ?>
 CACHE MANIFEST

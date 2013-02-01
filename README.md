@@ -24,6 +24,13 @@ Then, update conf.js and add a new section to the ```sections``` array, the form
 
 ## Dev notes
 
+### Compass
+
+The following compass gems should be installed"
+
+* compass-aurora
+* animation --pre
+
 ### LiveReload
 
 If you have LiveReload on your local machine, you can use it on a
