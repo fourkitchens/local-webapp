@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html manifest="offline.manifest.php">
   <head>
-    <title>4K &hearts; Harvard</title>
+    <title>4K &hearts; {{title}}</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
     <link rel="stylesheet" href="/dist/release/index.css">

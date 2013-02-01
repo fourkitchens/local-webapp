@@ -61,6 +61,7 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
   });
 
   Sections.Views.List = Backbone.View.extend({
+    tagName: 'section',
     template: 'section',
 
     events: {
@@ -70,6 +71,7 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
     serialize: function() {
       return {
         id: this.id,
+        sectionId: this.sectionId,
         title: this.options.title
       };
     },
@@ -119,7 +121,8 @@ define([ 'app', 'lodash', 'backbone' ], function(app, _, Backbone) {
       }, this);
     },
 
-    initialize: function() {
+    initialize: function(options) {
+      this.sectionId = options.sectionId;
       this.collection.on('reset', this.render, this);
       this.collection.on('add', this.addSection, this);
       this.options.webCollection.on('reset', this.webReset, this);

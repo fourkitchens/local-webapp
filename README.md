@@ -2,7 +2,34 @@
 
 An experiment by [Four Kitchens](http://fourkitchens.com)
 
+## Getting started
+
+Before you can inject any content into the app you need to copy ```app/example.conf.js``` to ```app/conf.js```.
+This file will contain the list of sections to use in your app as well as some other valuable metadata.
+
+## Static content
+
+To add a static page to the app, first add the html in ```app/templates/static/{{template-name}}.html```
+where ```{{template-name}}}``` is an arbitrary name for the content you want to add.
+
+Then, update conf.js and add a new section to the ```sections``` array, the format is as follows:
+
+```JavaScript
+{
+  title: 'About This App', // The title to display in the app menu.
+  id: 'page-about', // The ID to anchor the menu to. This should be unique.
+  template: 'static/about' // The template to use.
+}
+```
+
 ## Dev notes
+
+### Compass
+
+The following compass gems should be installed"
+
+* compass-aurora
+* animation --pre
 
 ### LiveReload
 

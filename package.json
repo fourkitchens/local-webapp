@@ -5,7 +5,10 @@
   "main": "grunt.js",
   "dependencies": {
     "grunt-compass": "~0.3.7",
-    "grunt-contrib-handlebars": "~0.3.3"
+    "grunt-contrib-handlebars": "~0.3.3",
+    "handlebars": "https://github.com/elliotttf/handlebars.js/tarball/master",
+    "requirejs": "~2.1.4",
+    "amdefine": ">=0.0.2"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,3 +1,7 @@
+var fs = require('fs');
+var hb = require('handlebars');
+var path = require('path');
+
 // This is the main application configuration file.  It is a Grunt
 // configuration file, which you can learn more about here:
 // https://github.com/cowboy/grunt/blob/master/docs/configuring.md
@@ -74,7 +78,10 @@ module.exports = function(grunt) {
         dest: 'dist/debug',
         linecomments: true,
         forcecompile: true,
-        require: 'aurora',
+        require: [
+          'aurora',
+          'animation'
+        ],
         debugsass: true,
         images: 'assets/images',
         relativeassets: true
@@ -85,7 +92,10 @@ module.exports = function(grunt) {
         outputstyle: 'compressed',
         linecomments: false,
         forcecompile: true,
-        require: 'aurora',
+        require: [
+          'aurora',
+          'animation'
+        ],
         debugsass: false,
         images: 'assets/images',
         relativeassets: true
@@ -184,11 +194,11 @@ module.exports = function(grunt) {
     watch: {
       compass: {
         files: ["grunt.js", "assets/sass/**/*.scss"],
-        tasks: "compass:dev compass:prod mincss"
+        tasks: "compass:dev compass:prod mincss indexTemplate"
       },
       requirejs: {
         files: ["grunt.js", "app/**/*.js", "app/templates/**/*.html"],
-        tasks: "lint handlebars requirejs concat min"
+        tasks: "lint handlebars requirejs concat min indexTemplate"
       }
     }
 
@@ -198,15 +208,32 @@ module.exports = function(grunt) {
   // @see https://github.com/backbone-boilerplate/grunt-bbb/issues/84
   grunt.loadNpmTasks('grunt-contrib-handlebars');
 
+  grunt.registerTask('indexTemplate', 'Creating index.html', function() {
+    var done = this.async();
+    var config = require('./app/conf');
+    var requirejs = require('requirejs');
+    requirejs.config({
+      baseUrl: __dirname,
+      nodeRequire: require
+    });
+    requirejs([ ], function() {
+      var src = fs.readFileSync(path.join(__dirname, 'index.html.tpl'), 'UTF-8');
+      var tpl = hb.compile(src);
+      var vars = config;
+      fs.writeFileSync(path.join(__dirname, 'index.html'), tpl(vars));
+      done(true);
+    });
+  });
+
   // The debug task will remove all contents inside the dist/ folder, lint
   // all your code, precompile all the underscore templates into
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.
-  grunt.registerTask("debug", "clean lint handlebars requirejs concat compass:dev");
+  grunt.registerTask("debug", "clean lint handlebars requirejs concat compass:dev indexTemplate");
 
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "debug compass:prod min mincss");
+  grunt.registerTask("release", "debug compass:prod min mincss indexTemplate");
 
 };
