@@ -21,6 +21,11 @@ define([ ], function() {
         title: 'About Four Kitchens', // The title to display in the app menu.
         id: 'page-about', // The ID from the template to anchor the menu to. This should be unique.
         template: 'static/20-about' // The template to use.
+      },
+      {
+        title: 'Project Vision', // The title to display in the app menu.
+        id: 'page-projvision', // The ID from the template to anchor the menu to. This should be unique.
+        template: 'static/30-projvision' // The template to use.
       }
     ]
   };
