@@ -4,7 +4,7 @@ if (typeof define !== 'function') {
 define([ ], function() {
   return {
     // The title that will be used throughout the site.
-    title: 'Microfinance Gateway Proposal',
+    title: 'Microfinance Gateway Proposal | Four Kitchens',
     // true if you want to include the 4k blog.
     blog: false,
     // Set the position in the menu for the blog.
@@ -13,8 +13,13 @@ define([ ], function() {
     // them displayed.
     sections: [
       {
+        title: 'Welcome', // The title to display in the app menu.
+        id: 'page-welcome', // The ID to anchor the menu to. This should be unique.
+        template: 'static/05-welcome' // The template to use.
+      },
+      {
         title: 'Introduction', // The title to display in the app menu.
-        id: 'page-into', // The ID to anchor the menu to. This should be unique.
+        id: 'page-intro', // The ID to anchor the menu to. This should be unique.
         template: 'static/10-intro' // The template to use.
       },
       {
@@ -24,12 +29,12 @@ define([ ], function() {
       },
       {
         title: 'Project Vision', // The title to display in the app menu.
-        id: 'page-projvision', // The ID from the template to anchor the menu to. This should be unique.
+        id: 'page-vision', // The ID from the template to anchor the menu to. This should be unique.
         template: 'static/30-projvision' // The template to use.
       },
       {
         title: 'Project Scope', // The title to display in the app menu.
-        id: 'page-projscope', // The ID from the template to anchor the menu to. This should be unique.
+        id: 'page-scope', // The ID from the template to anchor the menu to. This should be unique.
         template: 'static/40-projscope' // The template to use.
       },
       {
@@ -56,6 +61,11 @@ define([ ], function() {
         title: 'Appendix', // The title to display in the app menu.
         id: 'page-appendix', // The ID from the template to anchor the menu to. This should be unique.
         template: 'static/90-appendix' // The template to use.
+      },
+      {
+        title: 'Thank You', // The title to display in the app menu.
+        id: 'page-thanks', // The ID from the template to anchor the menu to. This should be unique.
+        template: 'static/95-thanks' // The template to use.
       }
     ]
   };
