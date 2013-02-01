@@ -3,3 +3,6 @@
 index.html
 dist
 node_modules
+# app/conf.js # -- This branch will _include_ the app config
+*.sublime-workspace
+

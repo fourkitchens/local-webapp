@@ -1,0 +1,102 @@
+<div class="box headline">
+  <h2>Your questions from the SOW</h2>
+</div>
+
+<div class="box">
+
+  <p class="question">For library documents that are available in more than one
+  language, is there a way to indicate to the user that the same publication is
+  available in more than one language?</p>
+  
+  <p>Absolutely! As mentioned above, one method is to create a “File” content
+  type and leverage Drupal’s built-in internationalization capabilities to
+  create “translations” of those file nodes that contain attachments in their
+  respective languages. The English version of a file would have an English-
+  language node containing the English-language attachment. This node would
+  clearly list all available “translations”: other nodes that contain same file
+  written in other languages (e.g., French, Spanish, Arabic). We can further
+  improve user experience by leveraging a module we developed called <a
+  href="http://drupal.org/project/attachment_links">Attachment Links</a> to
+  create unique, unchanging URLs to each file attachment. This mitigates the
+  common problem of Drupal renaming new versions of files as they are attached
+  to nodes where a file already exists.</p>
+  
+  <p class="question">What mechanisms can be implemented in the Admin to help
+  review and moderate content that has been published and that the taxonomy and
+  tagging is correct? For example, can Admins pull-out reports to determine who
+  has added what content?</p>
+  
+  <p>One approach to this problem would be to leverage the Drupal <a
+  href="http://drupal.org/project/workbench">Workbench</a> module to define
+  authoring options, set up roles and permissions, and enforce content workflows
+  and moderation. This will give you the ability to control who has access to
+  edit content based on an organization's structure, and it will give users the
+  ability to submit new content and manage their existing content. It will also
+  help you set up content creation workflows that involve a review and feedback
+  mechanism so that editors/moderators can provide feedback to content creators.
+  Workbench can also provide reports of user generated content that can be
+  filtered by author, date ranges, etc.</p>
+  
+  <p class="question">How should current domains and sub-domains will be
+  incorporated and managed in the new Drupal platform? What are the
+  recommendations for SEO?</p>
+  
+  <p>Ideally, the various websites should be a single Drupal site with
+  localization and internationalization features enabled: support for
+  translations, foreign-language menus and UI elements, etc. The implementation
+  strategy for this, however, would be determined during the discovery phase for
+  which we are bidding. We would need to take a much closer look at your
+  workflows and internal structure before we can make a qualified
+  recommendation. There are many advantages to a single website:</p>
+  
+  <ul>
+    <li>Much lower overhead to maintain updates, security patches, and
+    changes to the site.</li>
+
+    <li>Searching across all content and languages is easier to implement and
+    configure.</li>
+    
+    <li>Consistent user experience is easier to design.</li>
+    
+    <li>Better SEO due to everything being on the same domain rather than spread
+    across multiple subdomains.</li>
+    
+    <li>Administrating and maintaining a single site is much easier than
+    maintaining multiple sites.</li>
+    
+    <li>If admin or editor access across language "sections" of the site is a
+    concern — i.e., keeping English editors siloed from French editors —
+    workflows and permissions can be created to prevent users from editing
+    content they shouldn’t be able to modify</li>
+
+  </ul>
+  
+  <p class="question">We will launch the new site with English, French, Spanish,
+  and Arabic sites. Down the road (estimated of at least 2 years’ time minimum)
+  we intend to add regional sites in Chinese and Russian which will follow the
+  same architecture as the other sites. Therefore, the site needs to be scalable
+  to allow for these new languages to be added.</p>
+  
+  <p>Using Drupal’s built-in localization and internationalization capabilities,
+  expanding the site to new regions and languages is not a problem. The platform
+  is very scalable, there is support for every major international language, and
+  we have lots of experience working with multiple languages.</p>
+  
+  <p>One improvement you can make on your website immediately is to reorder the
+  list of affiliate language sites on the top right corner of all pages by
+  placing Arabic all the way to the right. Being the only right-to-left language
+  in the list, doing so will ensure that Arabic visitors see it first. It is
+  this type of critical eye and attention to detail that we bring to the table
+  in addition to our technical expertise.</p>
+  
+  <p>Before:<br /><img style="float: none;" src="/assets/images/example-rtl-before.png" alt="Example: RTL Language, Before" /></p>
+
+  <p>After: <br /><img style="float: none;" src="/assets/images/example-rtl-after.png" alt="Example: RTL Language, After" /></p>
+  
+  <p>In the interim before the full sites are ready to be launched, we may have
+  small amounts of content in these languages, most likely to be library
+  documents. The site needs to allow these publications to be added and show up
+  in search results.</p>
+  
+  <p>This is easily achieved using the file-handling solution we outlined above.</p>
+</div>

@@ -6,3 +6,29 @@
   @include clearfix();
 }
 
+table {
+  td, th {
+    padding: 0.25em 0.5em;
+    border: 1px solid #dedede;
+  }
+
+  th {
+    color: #000;
+    background: #e0e0e0;
+    border-color: #d2d2d2;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background: #f2f2f2;
+  }
+}
+
+/**
+ * Some responsive considerations that aren't provided
+ * with https://github.com/ksmandersen/compass-normalize
+ */
+iframe {
+  max-width: 100%;
+}
