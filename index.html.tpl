@@ -6,7 +6,7 @@
     <meta name="apple-touch-fullscreen" content="yes" />
     <link rel="stylesheet" href="/dist/release/index.css">
     <script src="/assets/js/libs/modernizr.min.js"></script>
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <script type="text/javascript" src="//use.typekit.net/gug5vlt.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
