@@ -87,24 +87,7 @@ function($, _, Backbone, Handlebars) {
       var layout = new Backbone.Layout(_.extend({
         template: name,
         className: 'layout ' + name,
-        id: 'layout',
-        setViews: function(views) {
-          // Iterate over all the views and use the View's view method to assign.
-          _.each(views, function(view, name) {
-            // If the view is an array put all views into insert mode.
-            if (_.isArray(view)) {
-              return _.each(view, function(view) {
-                this.insertView(name, view);
-              }, this);
-            }
-
-            // Assign each view using the view function.
-            this.setView(name, view);
-          }, this);
-
-          // Allow for chaining
-          return this;
-        }
+        id: 'layout'
       }, options));
 
       // Insert into the DOM.
