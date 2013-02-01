@@ -26,6 +26,21 @@ define([ ], function() {
         title: 'Project Vision', // The title to display in the app menu.
         id: 'page-projvision', // The ID from the template to anchor the menu to. This should be unique.
         template: 'static/30-projvision' // The template to use.
+      },
+      {
+        title: 'Project Scope', // The title to display in the app menu.
+        id: 'page-projscope', // The ID from the template to anchor the menu to. This should be unique.
+        template: 'static/40-projscope' // The template to use.
+      },
+      {
+        title: 'Questions from SOW', // The title to display in the app menu.
+        id: 'page-questions', // The ID from the template to anchor the menu to. This should be unique.
+        template: 'static/50-questions' // The template to use.
+      },
+      {
+        title: 'Time and Cost Estimates', // The title to display in the app menu.
+        id: 'page-estimates', // The ID from the template to anchor the menu to. This should be unique.
+        template: 'static/60-estimates' // The template to use.
       }
     ]
   };
