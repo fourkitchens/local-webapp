@@ -2,3 +2,4 @@
 .htaccess
 dist
 node_modules
+app/conf.js

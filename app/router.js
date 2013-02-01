@@ -4,10 +4,11 @@ define([
   'app',
   'modules/sections',
   'modules/static',
-  'modules/menu'
+  'modules/menu',
+  'conf'
 ],
 
-function(_, app, Sections, Static, Menu) {
+function(_, app, Sections, Static, Menu, Config) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -18,16 +19,8 @@ function(_, app, Sections, Static, Menu) {
 
     index: function() {
       app.useLayout('main');
-      var views = {
-        '#menu': this.menu,
-        '#page-about': this.aboutSections,
-        '#page-executive-summary': this.executiveSummary,
-        '#page-process': this.process,
-        '#page-blog': this.blogSectionsList,
-        '#page-thanks': this.thanks
-      };
 
-      app.layout.setViews(views);
+      app.layout.setViews(this.views);
       app.layout.render(_.bind(function(el) {
         this.rendered = true;
         app.mySwipe = new Swipe(document.getElementById('pages'), {
@@ -83,54 +76,52 @@ function(_, app, Sections, Static, Menu) {
       this.rendered = false;
       this.tocItems = new Menu.TOCCollection();
       this.menu = new Menu.Views.MenuList({ collection: this.tocItems });
+      this.views = {
+        '#menu': this.menu,
+        '#sections': []
+      };
 
-      this.aboutSections = new Static.Views.AboutView();
-      this.tocItems.create({
-        title: 'About This App',
-        id: 'page-about',
-        pageIndex: 0
-      });
+      var pageIndex = 0;
+      Config.sections.forEach(_.bind(function(section) {
+        if (Config.blog && pageIndex == Config.blogIndex) {
+          this.addBlog(pageIndex);
+          pageIndex++;
+        }
 
-      this.executiveSummary = new Static.Views.ExecutiveSummaryView();
-      this.tocItems.create({
-        title: 'It Works Offline!',
-        id: 'page-executive-summary',
-        pageIndex: 1
-      });
+        this.views['#sections'].push(new Static.Views.View(section));
+        this.tocItems.create({
+          title: section.title,
+          id: section.id,
+          pageIndex: pageIndex
+        });
+        pageIndex++;
+      }, this));
+      if (Config.blog && pageIndex == Config.blogIndex) {
+        this.addBlog(pageIndex);
+      }
+    },
 
-      this.process = new Static.Views.ProcessView();
-      this.tocItems.create({
-        title: 'Neat Huh?',
-        id: 'page-process',
-        pageIndex: 2
-      });
-
+    addBlog: function(pageIndex) {
       this.webBlogSections = new Sections.WebCollection();
       this.sqlBlogSections = new Sections.WebSQLCollection();
       this.blogSectionsList = new Sections.Views.List({
-        id: 'blog',
+        id: 'page-blog',
+        sectionId: 'blog',
         title: 'From the Four Kitchens Blog',
         collection: this.sqlBlogSections,
         webCollection: this.webBlogSections
       });
+      this.views['#sections'].push(this.blogSectionsList);
       this.tocItems.create({
         title: 'From the Four Kitchens Blog',
         id: 'page-blog',
-        pageIndex: 3
+        pageIndex: pageIndex
       });
 
       this.sqlBlogSections.fetch({
         success: _.bind(this.fetchWebBlogSections, this),
         error: _.bind(this.fetchWebBlogSections, this)
       });
-
-      this.thanks = new Static.Views.ThanksView();
-      this.tocItems.create({
-        title: 'Thanks!',
-        id: 'page-thanks',
-        pageIndex: 4
-      });
-
     },
 
     fetchWebBlogSections: function() {
