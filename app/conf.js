@@ -6,7 +6,7 @@ define([ ], function() {
     // The title that will be used throughout the site.
     title: 'Microfinance Gateway Proposal',
     // true if you want to include the 4k blog.
-    blog: true,
+    blog: false,
     // Set the position in the menu for the blog.
     blogIndex: 1,
     // List the sections in the order that you want
