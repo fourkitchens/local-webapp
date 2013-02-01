@@ -35,10 +35,13 @@ img.swipe {
   background: #fff;
 
   img {
-    max-width: 200px;
+    // This is a useful style, but should be applied
+    // to a specific class only.
+    
+    /* max-width: 200px;
     max-height: 200px;
-    float: left;
-    margin-right: 1em;
+    float: left; 
+    margin-right: 1em; */
 
     &.save-to-desktop {
       float: none;
