@@ -68,6 +68,10 @@ h6 {
   @include trailer(0, $h6-font-size);
 }
 
+// Line Length Adjustment
+p, li {
+  max-width: 45em;
+}
 
 // Links
 //
