@@ -9,12 +9,12 @@ define([ ], function() {
     sections: [
       {
         title: 'About This App', // The title to display in the app menu.
-        id: 'page-about', // The ID from the template to anchor the menu to.
+        id: 'page-about', // The ID to anchor the menu to. This should be unique.
         template: 'static/about' // The template to use.
       },
       {
         title: 'Thanks!', // The title to display in the app menu.
-        id: 'page-thanks', // The ID from the template to anchor the menu to.
+        id: 'page-thanks', // The ID from the template to anchor the menu to. This should be unique.
         template: 'static/thanks' // The template to use.
       }
     ]
