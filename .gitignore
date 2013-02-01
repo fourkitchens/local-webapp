@@ -1,5 +1,6 @@
 .sass-cache/
 .htaccess
+index.html
 dist
 node_modules
 app/conf.js
